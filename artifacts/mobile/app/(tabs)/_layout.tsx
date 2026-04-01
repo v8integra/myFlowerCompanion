@@ -7,23 +7,34 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Platform, StyleSheet, View, useColorScheme } from "react-native";
 import Colors from "@/constants/colors";
+import { useLanguage } from "@/context/LanguageContext";
 
 function NativeTabLayout() {
+  const { t } = useLanguage();
   return (
     <NativeTabs>
       <NativeTabs.Trigger name="index">
         <Icon sf={{ default: "leaf", selected: "leaf.fill" }} />
-        <Label>Gardens</Label>
+        <Label>{t("tab_gardens")}</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="settings">
         <Icon sf={{ default: "location", selected: "location.fill" }} />
-        <Label>Zone</Label>
+        <Label>{t("tab_zone")}</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="care">
+        <Icon sf={{ default: "heart.text.square", selected: "heart.text.square.fill" }} />
+        <Label>{t("tab_care")}</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="about">
+        <Icon sf={{ default: "info.circle", selected: "info.circle.fill" }} />
+        <Label>{t("tab_about")}</Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
 
 function ClassicTabLayout() {
+  const { t } = useLanguage();
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
   const isIOS = Platform.OS === "ios";
@@ -63,7 +74,7 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Gardens",
+          title: t("tab_gardens"),
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="leaf.fill" tintColor={color} size={24} />
@@ -75,12 +86,36 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Zone",
+          title: t("tab_zone"),
           tabBarIcon: ({ color }) =>
             isIOS ? (
               <SymbolView name="location.fill" tintColor={color} size={24} />
             ) : (
               <Ionicons name="location" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="care"
+        options={{
+          title: t("tab_care"),
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="heart.text.square.fill" tintColor={color} size={24} />
+            ) : (
+              <Ionicons name="heart-circle-outline" size={22} color={color} />
+            ),
+        }}
+      />
+      <Tabs.Screen
+        name="about"
+        options={{
+          title: t("tab_about"),
+          tabBarIcon: ({ color }) =>
+            isIOS ? (
+              <SymbolView name="info.circle.fill" tintColor={color} size={24} />
+            ) : (
+              <Ionicons name="information-circle-outline" size={22} color={color} />
             ),
         }}
       />

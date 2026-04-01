@@ -1,0 +1,9 @@
+Android - APK file or (.aab)
+Title (30 characters): My Flower Companion
+Short Description (80 characters): 
+
+
+
+iOS - Xcode
+Title (30 characters): My Flower Companion
+Keywords (100 characters):

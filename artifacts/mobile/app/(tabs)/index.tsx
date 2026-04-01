@@ -13,19 +13,36 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
 import { useGarden } from "@/context/GardenContext";
+import { useLanguage } from "@/context/LanguageContext";
 import { PLANTS } from "@/data/plants";
+import { LANGUAGES } from "@/translations";
 import PlantChip from "@/components/PlantChip";
 import ZoneBadge from "@/components/ZoneBadge";
 
+const LANG_BADGE_COLORS: Record<string, string> = {
+  en: "#4A7C59",
+  es: "#B84040",
+  fr: "#2155A3",
+  it: "#1A7A47",
+  de: "#4A6080",
+  zh: "#B87020",
+  ja: "#8A1A1A",
+  ko: "#3A5AA0",
+  vi: "#7A3A1A",
+};
+
 export default function GardensScreen() {
   const { gardens, createGarden, deleteGarden } = useGarden();
+  const { t, lang, setLang } = useLanguage();
   const insets = useSafeAreaInsets();
   const [creating, setCreating] = useState(false);
   const [newName, setNewName] = useState("");
   const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null);
+  const [langPickerVisible, setLangPickerVisible] = useState(false);
 
   const handleCreate = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -47,23 +64,31 @@ export default function GardensScreen() {
   return (
     <View style={[styles.container, { paddingTop: topPad }]}>
       <View style={styles.header}>
-        <View>
+        <View style={styles.headerLeft}>
           <Text style={styles.appName}>MyFlowerCompanion</Text>
-          <Text style={styles.subtitle}>Your companion gardens</Text>
+          <Text style={styles.subtitle}>{t("app_subtitle")}</Text>
         </View>
-        <TouchableOpacity
-          style={styles.addBtn}
-          onPress={() => setCreating(true)}
-        >
-          <Ionicons name="add" size={22} color="#fff" />
-        </TouchableOpacity>
+        <View style={styles.headerRight}>
+          <TouchableOpacity
+            style={styles.langBtn}
+            onPress={() => setLangPickerVisible(true)}
+          >
+            <Ionicons name="globe-outline" size={20} color={Colors.light.primary} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.addBtn}
+            onPress={() => setCreating(true)}
+          >
+            <Ionicons name="add" size={22} color="#fff" />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {creating && (
         <View style={styles.createCard}>
           <TextInput
             style={styles.input}
-            placeholder="Garden name (optional)"
+            placeholder={t("garden_name_placeholder")}
             placeholderTextColor={Colors.light.textSecondary}
             value={newName}
             onChangeText={setNewName}
@@ -75,10 +100,10 @@ export default function GardensScreen() {
               style={styles.cancelBtn}
               onPress={() => { setCreating(false); setNewName(""); }}
             >
-              <Text style={styles.cancelText}>Cancel</Text>
+              <Text style={styles.cancelText}>{t("cancel")}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.createBtn} onPress={handleCreate}>
-              <Text style={styles.createText}>Create</Text>
+              <Text style={styles.createText}>{t("create")}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -95,18 +120,20 @@ export default function GardensScreen() {
         ListEmptyComponent={
           <View style={styles.empty}>
             <Ionicons name="leaf-outline" size={48} color={Colors.light.border} />
-            <Text style={styles.emptyTitle}>No gardens yet</Text>
-            <Text style={styles.emptyText}>Create your first garden to start finding companion flowers</Text>
+            <Text style={styles.emptyTitle}>{t("no_gardens")}</Text>
+            <Text style={styles.emptyText}>{t("no_gardens_desc")}</Text>
             <TouchableOpacity style={styles.emptyBtn} onPress={() => setCreating(true)}>
-              <Text style={styles.emptyBtnText}>Create Garden</Text>
+              <Text style={styles.emptyBtnText}>{t("create_garden")}</Text>
             </TouchableOpacity>
           </View>
         }
         renderItem={({ item }) => {
           const plants = item.plantIds.map(id => PLANTS.find(p => p.id === id)).filter(Boolean);
+          const plantLabel = plants.length === 1
+            ? `1 ${t("plant_singular")}`
+            : `${plants.length} ${t("plant_plural")}`;
           return (
             <View style={styles.cardWrapper}>
-              {/* Main tappable card — navigate to garden detail */}
               <Pressable
                 style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
                 onPress={() => router.push({ pathname: "/garden/[id]", params: { id: item.id } })}
@@ -117,11 +144,8 @@ export default function GardensScreen() {
                   </View>
                   <View style={styles.cardInfo}>
                     <Text style={styles.cardName}>{item.name}</Text>
-                    <Text style={styles.cardCount}>
-                      {plants.length} {plants.length === 1 ? "plant" : "plants"}
-                    </Text>
+                    <Text style={styles.cardCount}>{plantLabel}</Text>
                   </View>
-                  {/* Spacer reserves space for the absolutely-positioned right column */}
                   <View style={styles.cardRightSpacer} />
                 </View>
                 {plants.length > 0 && (
@@ -130,18 +154,16 @@ export default function GardensScreen() {
                       <PlantChip key={p.id} plant={p} compact />
                     ))}
                     {plants.length > 4 && (
-                      <Text style={styles.more}>+{plants.length - 4} more</Text>
+                      <Text style={styles.more}>+{plants.length - 4} {t("more")}</Text>
                     )}
                   </View>
                 )}
                 <View style={styles.cardFooter}>
-                  <Text style={styles.viewDetail}>View garden</Text>
+                  <Text style={styles.viewDetail}>{t("view_garden")}</Text>
                   <Ionicons name="chevron-forward" size={14} color={Colors.light.primary} />
                 </View>
               </Pressable>
 
-              {/* Right column: zone badge on top, delete button below.
-                  Placed OUTSIDE the Pressable so taps don't trigger navigation. */}
               <View style={styles.cardRightCol}>
                 <ZoneBadge zone={item.zone} />
                 <TouchableOpacity
@@ -157,27 +179,65 @@ export default function GardensScreen() {
         }}
       />
 
-      {/* Delete confirmation modal — works in iframes unlike window.confirm() */}
+      {/* Delete confirmation modal */}
       <Modal visible={deleteTarget !== null} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalCard}>
-            <Text style={styles.modalTitle}>Delete Garden</Text>
+            <Text style={styles.modalTitle}>{t("delete_garden")}</Text>
             <Text style={styles.modalMessage}>
-              Are you sure you want to delete "{deleteTarget?.name}"? This cannot be undone.
+              {t("delete_garden_confirm", { name: deleteTarget?.name ?? "" })}
             </Text>
             <View style={styles.modalActions}>
               <TouchableOpacity
                 style={styles.modalCancelBtn}
                 onPress={() => setDeleteTarget(null)}
               >
-                <Text style={styles.modalCancelText}>Cancel</Text>
+                <Text style={styles.modalCancelText}>{t("cancel")}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.modalDeleteBtn} onPress={confirmDelete}>
-                <Text style={styles.modalDeleteText}>Delete</Text>
+                <Text style={styles.modalDeleteText}>{t("delete")}</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
+      </Modal>
+
+      {/* Language picker modal */}
+      <Modal visible={langPickerVisible} transparent animationType="fade">
+        <Pressable style={styles.modalOverlay} onPress={() => setLangPickerVisible(false)}>
+          <Pressable style={styles.langPickerCard} onPress={e => e.stopPropagation()}>
+            <View style={styles.langPickerHeader}>
+              <Text style={styles.langPickerTitle}>{t("select_language")}</Text>
+              <TouchableOpacity onPress={() => setLangPickerVisible(false)}>
+                <Ionicons name="close" size={22} color={Colors.light.textSecondary} />
+              </TouchableOpacity>
+            </View>
+            {LANGUAGES.map(l => (
+              <TouchableOpacity
+                key={l.code}
+                style={[styles.langRow, lang === l.code && styles.langRowActive]}
+                onPress={() => {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  setLang(l.code);
+                  setLangPickerVisible(false);
+                }}
+              >
+                <View style={[styles.langCodeBadge, { backgroundColor: LANG_BADGE_COLORS[l.code] ?? "#4A7C59" }]}>
+                  <Text style={styles.langCodeText}>{l.code.toUpperCase()}</Text>
+                </View>
+                <View style={styles.langInfo}>
+                  <Text style={[styles.langNative, lang === l.code && styles.langNativeActive]}>
+                    {l.nativeLabel}
+                  </Text>
+                  <Text style={styles.langEnglish}>{l.label}</Text>
+                </View>
+                {lang === l.code && (
+                  <Ionicons name="checkmark" size={18} color={Colors.light.primary} />
+                )}
+              </TouchableOpacity>
+            ))}
+          </Pressable>
+        </Pressable>
       </Modal>
     </View>
   );
@@ -196,6 +256,14 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     paddingTop: 8,
   },
+  headerLeft: {
+    flex: 1,
+  },
+  headerRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
   appName: {
     fontSize: 22,
     fontFamily: "Inter_700Bold",
@@ -206,6 +274,16 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     color: Colors.light.textSecondary,
     marginTop: 2,
+  },
+  langBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: Colors.light.softGreen,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: Colors.light.border,
   },
   addBtn: {
     width: 42,
@@ -305,69 +383,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 1,
   },
-  modalOverlay: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.45)",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 32,
-  },
-  modalCard: {
-    backgroundColor: Colors.light.card,
-    borderRadius: 20,
-    padding: 24,
-    width: "100%",
-    maxWidth: 340,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.2,
-    shadowRadius: 16,
-    elevation: 10,
-  },
-  modalTitle: {
-    fontSize: 17,
-    fontFamily: "Inter_700Bold",
-    color: Colors.light.text,
-    marginBottom: 10,
-  },
-  modalMessage: {
-    fontSize: 14,
-    fontFamily: "Inter_400Regular",
-    color: Colors.light.textSecondary,
-    lineHeight: 20,
-    marginBottom: 20,
-  },
-  modalActions: {
-    flexDirection: "row",
-    gap: 10,
-  },
-  modalCancelBtn: {
-    flex: 1,
-    height: 44,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: Colors.light.border,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  modalCancelText: {
-    fontSize: 14,
-    fontFamily: "Inter_500Medium",
-    color: Colors.light.textSecondary,
-  },
-  modalDeleteBtn: {
-    flex: 1,
-    height: 44,
-    borderRadius: 12,
-    backgroundColor: Colors.light.danger,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  modalDeleteText: {
-    fontSize: 14,
-    fontFamily: "Inter_600SemiBold",
-    color: "#fff",
-  },
   cardPressed: {
     opacity: 0.9,
     transform: [{ scale: 0.99 }],
@@ -455,5 +470,133 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "Inter_600SemiBold",
     color: "#fff",
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.45)",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 32,
+  },
+  modalCard: {
+    backgroundColor: Colors.light.card,
+    borderRadius: 20,
+    padding: 24,
+    width: "100%",
+    maxWidth: 340,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
+    elevation: 10,
+  },
+  modalTitle: {
+    fontSize: 17,
+    fontFamily: "Inter_700Bold",
+    color: Colors.light.text,
+    marginBottom: 10,
+  },
+  modalMessage: {
+    fontSize: 14,
+    fontFamily: "Inter_400Regular",
+    color: Colors.light.textSecondary,
+    lineHeight: 20,
+    marginBottom: 20,
+  },
+  modalActions: {
+    flexDirection: "row",
+    gap: 10,
+  },
+  modalCancelBtn: {
+    flex: 1,
+    height: 44,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: Colors.light.border,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modalCancelText: {
+    fontSize: 14,
+    fontFamily: "Inter_500Medium",
+    color: Colors.light.textSecondary,
+  },
+  modalDeleteBtn: {
+    flex: 1,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: Colors.light.danger,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modalDeleteText: {
+    fontSize: 14,
+    fontFamily: "Inter_600SemiBold",
+    color: "#fff",
+  },
+  langPickerCard: {
+    backgroundColor: Colors.light.card,
+    borderRadius: 20,
+    padding: 20,
+    width: "100%",
+    maxWidth: 360,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.2,
+    shadowRadius: 16,
+    elevation: 10,
+  },
+  langPickerHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 16,
+  },
+  langPickerTitle: {
+    fontSize: 17,
+    fontFamily: "Inter_700Bold",
+    color: Colors.light.text,
+  },
+  langRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingVertical: 11,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    marginBottom: 2,
+  },
+  langRowActive: {
+    backgroundColor: Colors.light.softGreen,
+  },
+  langCodeBadge: {
+    width: 38,
+    height: 38,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  langCodeText: {
+    fontSize: 12,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
+    letterSpacing: 0.5,
+  },
+  langInfo: {
+    flex: 1,
+  },
+  langNative: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.light.text,
+  },
+  langNativeActive: {
+    color: Colors.light.primary,
+  },
+  langEnglish: {
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    color: Colors.light.textSecondary,
+    marginTop: 1,
   },
 });

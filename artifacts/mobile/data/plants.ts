@@ -136,6 +136,42 @@ export const PLANTS: Plant[] = [
   { id: "nemesia", name: "Nemesia", type: "flower", zones: [3,4,5,6,7,8,9,10,11], description: "Cool-season annual, attracts beneficial insects", icon: "flower" },
   { id: "geum", name: "Geum", type: "flower", zones: [4,5,6,7,8,9], description: "Avens, early-season pollinator food, long blooming", icon: "flower" },
   { id: "strawberry", name: "Strawberry", type: "vegetable", zones: [3,4,5,6,7,8,9,10], description: "Fruiting ground cover", icon: "nutrition" },
+  // Additional flowers
+  { id: "forget_me_not", name: "Forget-Me-Not", type: "flower", zones: [3,4,5,6,7,8,9,10], description: "Attracts beneficial insects, perfect ground cover under roses", icon: "flower" },
+  { id: "calibrachoa", name: "Calibrachoa", type: "flower", zones: [3,4,5,6,7,8,9,10,11], description: "Million Bells, attracts pollinators, outstanding container plant", icon: "flower" },
+  { id: "ranunculus", name: "Ranunculus", type: "flower", zones: [4,5,6,7,8,9,10,11], description: "Persian Buttercup, attracts early-season bees and butterflies", icon: "flower" },
+  { id: "wisteria", name: "Wisteria", type: "flower", zones: [5,6,7,8,9], description: "Fragrant climbing vine, attracts bees, fixes nitrogen", icon: "flower" },
+  { id: "canna", name: "Canna Lily", type: "flower", zones: [7,8,9,10,11], description: "Tropical focal plant, attracts hummingbirds and bees", icon: "flower" },
+  { id: "crocosmia", name: "Crocosmia", type: "flower", zones: [5,6,7,8,9], description: "Fiery arching stems attract hummingbirds and beneficial insects", icon: "flower" },
+  { id: "calla_lily", name: "Calla Lily", type: "flower", zones: [8,9,10], description: "Elegant blooms attract pollinators, superb cut flower", icon: "flower" },
+  { id: "alstroemeria", name: "Alstroemeria", type: "flower", zones: [6,7,8,9,10], description: "Peruvian Lily, long-lasting cut flower, attracts bees and butterflies", icon: "flower" },
+  { id: "muscari", name: "Grape Hyacinth", type: "flower", zones: [4,5,6,7,8,9], description: "Early spring bulb, vital food for queen bumblebees emerging from winter", icon: "flower" },
+  { id: "rudbeckia", name: "Rudbeckia", type: "flower", zones: [3,4,5,6,7,8,9], description: "Gloriosa Daisy, feeds bees, birds, and butterflies across zones", icon: "flower" },
+  // Additional herbs
+  { id: "parsley", name: "Parsley", type: "herb", zones: [4,5,6,7,8,9], description: "Host plant for swallowtail butterflies, attracts beneficial insects", icon: "leaf" },
+  { id: "cilantro", name: "Cilantro", type: "herb", zones: [2,3,4,5,6,7,8,9,10,11], description: "Flowering cilantro attracts parasitic wasps and predatory insects", icon: "leaf" },
+  { id: "oregano", name: "Oregano", type: "herb", zones: [4,5,6,7,8,9,10], description: "Flowering oregano is a pollinator magnet, deters many pests", icon: "leaf" },
+  { id: "tarragon", name: "Tarragon", type: "herb", zones: [4,5,6,7,8], description: "Said to improve flavor of nearby vegetables and deter pests", icon: "leaf" },
+  { id: "lemon_balm", name: "Lemon Balm", type: "herb", zones: [3,4,5,6,7,8,9], description: "Powerfully attracts bees, repels gnats and mosquitoes", icon: "leaf" },
+  { id: "catnip", name: "Catnip", type: "herb", zones: [3,4,5,6,7,8,9], description: "Repels aphids, flea beetles, and squash bugs; attracts bees when flowering", icon: "leaf" },
+  { id: "marjoram", name: "Marjoram", type: "herb", zones: [4,5,6,7,8], description: "Attracts beneficial insects, said to improve flavor of neighboring plants", icon: "leaf" },
+  { id: "lemongrass", name: "Lemongrass", type: "herb", zones: [8,9,10,11], description: "Repels mosquitoes and some pests with citrus scent", icon: "leaf" },
+  // Additional vegetables
+  { id: "spinach", name: "Spinach", type: "vegetable", zones: [2,3,4,5,6,7,8,9], description: "Fast-growing cool-season leafy green", icon: "nutrition" },
+  { id: "kale", name: "Kale", type: "vegetable", zones: [2,3,4,5,6,7,8,9], description: "Hardy frost-tolerant brassica, one of the most nutritious greens", icon: "nutrition" },
+  { id: "broccoli", name: "Broccoli", type: "vegetable", zones: [2,3,4,5,6,7,8,9,10,11], description: "Cool-season brassica, highly nutritious, great for spring and fall", icon: "nutrition" },
+  { id: "garlic", name: "Garlic", type: "vegetable", zones: [3,4,5,6,7,8,9], description: "Fall-planted bulb with powerful natural pest-deterrent properties", icon: "nutrition" },
+  { id: "onion", name: "Onion", type: "vegetable", zones: [3,4,5,6,7,8,9], description: "Pungent scent confuses and deters many common garden pests", icon: "nutrition" },
+  { id: "radish", name: "Radish", type: "vegetable", zones: [2,3,4,5,6,7,8,9,10], description: "Fast-maturing root, excellent trap crop for cabbage maggot", icon: "nutrition" },
+  { id: "beet", name: "Beet", type: "vegetable", zones: [2,3,4,5,6,7,8,9,10], description: "Dual-purpose cool-season crop for roots and nutritious greens", icon: "nutrition" },
+  { id: "corn", name: "Corn", type: "vegetable", zones: [3,4,5,6,7,8,9,10], description: "Tall warm-season crop, classic Three Sisters partner", icon: "nutrition" },
+  { id: "potato", name: "Potato", type: "vegetable", zones: [3,4,5,6,7,8,9,10], description: "Underground tuber, cool-season staple crop", icon: "nutrition" },
+  { id: "eggplant", name: "Eggplant", type: "vegetable", zones: [5,6,7,8,9,10,11], description: "Heat-loving fruiting vegetable, close relative of tomato and pepper", icon: "nutrition" },
+  { id: "pea", name: "Pea", type: "vegetable", zones: [2,3,4,5,6,7,8,9], description: "Cool-season nitrogen-fixer, great for early spring planting", icon: "nutrition" },
+  { id: "swiss_chard", name: "Swiss Chard", type: "vegetable", zones: [2,3,4,5,6,7,8,9,10], description: "Heat and cold tolerant leafy green with colorful stems", icon: "nutrition" },
+  { id: "zucchini", name: "Zucchini", type: "vegetable", zones: [3,4,5,6,7,8,9,10,11], description: "Prolific warm-season summer squash, highly dependent on pollinators", icon: "nutrition" },
+  { id: "pumpkin", name: "Pumpkin", type: "vegetable", zones: [3,4,5,6,7,8,9,10,11], description: "Large warm-season vine, requires cross-pollination", icon: "nutrition" },
+  { id: "asparagus", name: "Asparagus", type: "vegetable", zones: [2,3,4,5,6,7,8,9], description: "Long-lived perennial, deters nematodes, harvested in spring", icon: "nutrition" },
 ];
 
 export const COMPANION_RELATIONS: CompanionRelation[] = [
@@ -617,6 +653,173 @@ export const COMPANION_RELATIONS: CompanionRelation[] = [
   { plantId: "squash", companionId: "larkspur", benefit: "Larkspur attracts hummingbirds and bees for squash pollination", benefitType: "pollination" },
   { plantId: "bean", companionId: "larkspur", benefit: "Larkspur brings hummingbirds and bees to the bean garden", benefitType: "pollination" },
   { plantId: "tomato", companionId: "larkspur", benefit: "Larkspur attracts hummingbirds and beneficial insects near tomatoes", benefitType: "pollination" },
+
+  // Forget-Me-Not companions
+  { plantId: "rose", companionId: "forget_me_not", benefit: "Forget-me-nots fill space under roses, suppressing weeds and attracting beneficials", benefitType: "general" },
+  { plantId: "tomato", companionId: "forget_me_not", benefit: "Forget-me-nots attract hoverflies whose larvae prey on aphids near tomatoes", benefitType: "pest-control" },
+  { plantId: "lettuce", companionId: "forget_me_not", benefit: "Forget-me-nots share cool-season timing with lettuce and attract beneficial insects", benefitType: "general" },
+
+  // Calibrachoa companions
+  { plantId: "tomato", companionId: "calibrachoa", benefit: "Calibrachoa attracts pollinators and beneficial insects near tomatoes", benefitType: "pollination" },
+  { plantId: "pepper", companionId: "calibrachoa", benefit: "Calibrachoa draws bees and beneficial insects to pepper plants", benefitType: "pollination" },
+  { plantId: "strawberry", companionId: "calibrachoa", benefit: "Calibrachoa attracts pollinators for strawberry flowers in containers", benefitType: "pollination" },
+
+  // Ranunculus companions
+  { plantId: "lettuce", companionId: "ranunculus", benefit: "Ranunculus shares cool-season timing with lettuce and attracts early bees", benefitType: "general" },
+  { plantId: "spinach", companionId: "ranunculus", benefit: "Ranunculus attracts early pollinators alongside cool-season spinach", benefitType: "pollination" },
+  { plantId: "pea", companionId: "ranunculus", benefit: "Ranunculus and peas share early-season timing, attracting early pollinators", benefitType: "pollination" },
+
+  // Canna companions
+  { plantId: "corn", companionId: "canna", benefit: "Canna attracts hummingbirds and bees near corn, improving pollination", benefitType: "pollination" },
+  { plantId: "tomato", companionId: "canna", benefit: "Canna attracts hummingbirds that also pollinate tomatoes", benefitType: "pollination" },
+  { plantId: "eggplant", companionId: "canna", benefit: "Canna attracts pollinators to eggplant flowers and provides backdrop", benefitType: "pollination" },
+
+  // Crocosmia companions
+  { plantId: "tomato", companionId: "crocosmia", benefit: "Crocosmia attracts hummingbirds and bees to the vegetable garden", benefitType: "pollination" },
+  { plantId: "squash", companionId: "crocosmia", benefit: "Crocosmia draws hummingbirds and bees needed for squash pollination", benefitType: "pollination" },
+  { plantId: "zucchini", companionId: "crocosmia", benefit: "Crocosmia attracts pollinators essential for zucchini fruit set", benefitType: "pollination" },
+
+  // Alstroemeria companions
+  { plantId: "rose", companionId: "alstroemeria", benefit: "Alstroemeria attracts pollinators and beneficial insects near roses", benefitType: "general" },
+  { plantId: "tomato", companionId: "alstroemeria", benefit: "Alstroemeria attracts bees and beneficial wasps near tomatoes", benefitType: "pollination" },
+
+  // Muscari companions
+  { plantId: "rose", companionId: "muscari", benefit: "Grape hyacinth flowers early, feeding queen bees before roses bloom", benefitType: "general" },
+  { plantId: "strawberry", companionId: "muscari", benefit: "Muscari attracts early pollinators just as strawberries begin flowering", benefitType: "pollination" },
+  { plantId: "pea", companionId: "muscari", benefit: "Muscari and peas share early-season timing, both benefiting early pollinators", benefitType: "pollination" },
+
+  // Rudbeckia companions
+  { plantId: "tomato", companionId: "rudbeckia", benefit: "Rudbeckia attracts beneficial insects and pollinators near tomatoes", benefitType: "pollination" },
+  { plantId: "squash", companionId: "rudbeckia", benefit: "Rudbeckia draws bees and butterflies needed for squash pollination", benefitType: "pollination" },
+  { plantId: "corn", companionId: "rudbeckia", benefit: "Rudbeckia attracts beneficial insects and pollinators to the corn garden", benefitType: "pollination" },
+
+  // Parsley companions
+  { plantId: "tomato", companionId: "parsley", benefit: "Parsley attracts swallowtail butterflies and beneficial wasps near tomatoes", benefitType: "pest-control" },
+  { plantId: "asparagus", companionId: "parsley", benefit: "Parsley and asparagus are classic companions — parsley improves asparagus vigor", benefitType: "growth" },
+  { plantId: "rose", companionId: "parsley", benefit: "Parsley repels rose beetles and attracts beneficial insects", benefitType: "pest-control" },
+  { plantId: "carrot", companionId: "parsley", benefit: "Parsley attracts beneficial insects that prey on carrot fly", benefitType: "pest-control" },
+
+  // Cilantro companions
+  { plantId: "spinach", companionId: "cilantro", benefit: "Cilantro repels aphids and spider mites from spinach when flowering", benefitType: "pest-control" },
+  { plantId: "lettuce", companionId: "cilantro", benefit: "Cilantro flowers attract hoverflies that prey on lettuce aphids", benefitType: "pest-control" },
+  { plantId: "broccoli", companionId: "cilantro", benefit: "Cilantro repels aphids and attracts parasitic wasps near brassicas", benefitType: "pest-control" },
+  { plantId: "kale", companionId: "cilantro", benefit: "Cilantro confuses cabbage worm moths and attracts beneficial wasps", benefitType: "pest-control" },
+  { plantId: "tomato", companionId: "cilantro", benefit: "Cilantro attracts parasitic wasps that control tomato hornworm", benefitType: "pest-control" },
+
+  // Oregano companions
+  { plantId: "tomato", companionId: "oregano", benefit: "Oregano repels spider mites and aphids while attracting pollinators", benefitType: "pest-control" },
+  { plantId: "pepper", companionId: "oregano", benefit: "Oregano deters pests and attracts beneficial insects near peppers", benefitType: "pest-control" },
+  { plantId: "broccoli", companionId: "oregano", benefit: "Oregano confuses cabbage white butterflies and deters many brassica pests", benefitType: "pest-control" },
+  { plantId: "cucumber", companionId: "oregano", benefit: "Oregano repels cucumber beetles and attracts beneficial predators", benefitType: "pest-control" },
+  { plantId: "eggplant", companionId: "oregano", benefit: "Oregano deters aphids and other pests from eggplant", benefitType: "pest-control" },
+
+  // Catnip companions
+  { plantId: "squash", companionId: "catnip", benefit: "Catnip repels squash bugs and aphids that damage squash plants", benefitType: "pest-control" },
+  { plantId: "eggplant", companionId: "catnip", benefit: "Catnip repels flea beetles that devastate eggplant foliage", benefitType: "pest-control" },
+  { plantId: "cucumber", companionId: "catnip", benefit: "Catnip repels aphids and flea beetles from cucumbers", benefitType: "pest-control" },
+  { plantId: "zucchini", companionId: "catnip", benefit: "Catnip repels squash bugs and aphids from zucchini plants", benefitType: "pest-control" },
+  { plantId: "potato", companionId: "catnip", benefit: "Catnip repels aphids, flea beetles, and Colorado potato beetles", benefitType: "pest-control" },
+
+  // Lemon Balm companions
+  { plantId: "squash", companionId: "lemon_balm", benefit: "Lemon balm strongly attracts bees for improved squash pollination", benefitType: "pollination" },
+  { plantId: "tomato", companionId: "lemon_balm", benefit: "Lemon balm attracts pollinators and repels gnats near tomatoes", benefitType: "general" },
+  { plantId: "zucchini", companionId: "lemon_balm", benefit: "Lemon balm draws bees essential for zucchini fruit set", benefitType: "pollination" },
+  { plantId: "pumpkin", companionId: "lemon_balm", benefit: "Lemon balm attracts pollinators critical for pumpkin production", benefitType: "pollination" },
+
+  // Marjoram companions
+  { plantId: "tomato", companionId: "marjoram", benefit: "Marjoram is said to enhance flavor of nearby tomatoes and repel pests", benefitType: "growth" },
+  { plantId: "pepper", companionId: "marjoram", benefit: "Marjoram attracts beneficial insects and improves pepper growth", benefitType: "growth" },
+  { plantId: "cucumber", companionId: "marjoram", benefit: "Marjoram repels some pests and attracts beneficial insects near cucumbers", benefitType: "pest-control" },
+
+  // Garlic companions
+  { plantId: "rose", companionId: "garlic", benefit: "Garlic repels aphids, Japanese beetles, and fungal diseases from roses", benefitType: "pest-control" },
+  { plantId: "tomato", companionId: "garlic", benefit: "Garlic repels spider mites and aphids from tomatoes", benefitType: "pest-control" },
+  { plantId: "carrot", companionId: "garlic", benefit: "Garlic deters carrot fly with its strong scent", benefitType: "pest-control" },
+  { plantId: "lettuce", companionId: "garlic", benefit: "Garlic repels aphids and slugs from lettuce", benefitType: "pest-control" },
+  { plantId: "beet", companionId: "garlic", benefit: "Garlic deters beet-feeding insects with its pungent scent", benefitType: "pest-control" },
+  { plantId: "potato", companionId: "garlic", benefit: "Garlic planted near potatoes repels aphids and Colorado potato beetle", benefitType: "pest-control" },
+  { plantId: "eggplant", companionId: "garlic", benefit: "Garlic repels spider mites and aphids from eggplant", benefitType: "pest-control" },
+
+  // Onion companions
+  { plantId: "carrot", companionId: "onion", benefit: "Onions repel carrot fly; carrots repel onion fly — a classic pairing", benefitType: "pest-control" },
+  { plantId: "tomato", companionId: "onion", benefit: "Onions deter aphids and other soft-bodied pests from tomatoes", benefitType: "pest-control" },
+  { plantId: "cabbage", companionId: "onion", benefit: "Onions confuse and repel cabbage white butterflies with their scent", benefitType: "pest-control" },
+  { plantId: "beet", companionId: "onion", benefit: "Onions and beets are excellent companions, each repelling the other's pests", benefitType: "pest-control" },
+  { plantId: "lettuce", companionId: "onion", benefit: "Onion scent deters aphids and slugs that attack lettuce", benefitType: "pest-control" },
+  { plantId: "kale", companionId: "onion", benefit: "Onions confuse cabbage moths and repel brassica pests near kale", benefitType: "pest-control" },
+  { plantId: "broccoli", companionId: "onion", benefit: "Onions mask brassica scent, confusing cabbage whites and other pests", benefitType: "pest-control" },
+
+  // Radish companions
+  { plantId: "cucumber", companionId: "radish", benefit: "Radishes act as a trap crop for cucumber beetles, protecting cucumbers", benefitType: "pest-control" },
+  { plantId: "spinach", companionId: "radish", benefit: "Radishes and spinach share cool-season timing and trap leafminers", benefitType: "pest-control" },
+  { plantId: "lettuce", companionId: "radish", benefit: "Radishes loosen soil for lettuce roots and deter aphids", benefitType: "growth" },
+  { plantId: "carrot", companionId: "radish", benefit: "Radishes loosen compacted soil, making room for carrot roots to develop", benefitType: "growth" },
+  { plantId: "squash", companionId: "radish", benefit: "Radishes repel squash vine borers when planted at the base of squash", benefitType: "pest-control" },
+
+  // Pea companions
+  { plantId: "corn", companionId: "pea", benefit: "Peas fix nitrogen that corn needs to produce large, full ears", benefitType: "soil" },
+  { plantId: "carrot", companionId: "pea", benefit: "Peas fix nitrogen that benefits carrots; their roots don't compete", benefitType: "soil" },
+  { plantId: "lettuce", companionId: "pea", benefit: "Peas fix nitrogen and provide light shade that slows lettuce bolting", benefitType: "growth" },
+  { plantId: "spinach", companionId: "pea", benefit: "Peas fix nitrogen for spinach while their shade helps prevent bolting", benefitType: "growth" },
+  { plantId: "radish", companionId: "pea", benefit: "Peas and radishes grow well together as spring companions in the garden", benefitType: "general" },
+
+  // Corn companions
+  { plantId: "bean", companionId: "corn", benefit: "Corn provides a natural trellis for pole beans in the Three Sisters method", benefitType: "growth" },
+  { plantId: "squash", companionId: "corn", benefit: "Corn, squash, and beans form the Three Sisters — each supporting the others", benefitType: "growth" },
+  { plantId: "pumpkin", companionId: "corn", benefit: "Corn provides support for pumpkin vines; squash deters corn pests", benefitType: "general" },
+  { plantId: "zucchini", companionId: "corn", benefit: "Corn gives structure while zucchini's large leaves shade out weeds below", benefitType: "growth" },
+
+  // Potato companions
+  { plantId: "cabbage", companionId: "potato", benefit: "Potatoes repel some cabbage pests; brassicas deter Colorado potato beetle", benefitType: "pest-control" },
+  { plantId: "bean", companionId: "potato", benefit: "Beans fix nitrogen that benefits potato growth and repel Colorado beetle", benefitType: "soil" },
+  { plantId: "corn", companionId: "potato", benefit: "Potatoes and corn are traditional garden neighbors that share space well", benefitType: "general" },
+
+  // Eggplant companions
+  { plantId: "tomato", companionId: "eggplant", benefit: "Eggplant acts as a trap crop for Colorado potato beetle near tomatoes", benefitType: "pest-control" },
+  { plantId: "pepper", companionId: "eggplant", benefit: "Eggplant and peppers share similar growing needs and deter each other's pests", benefitType: "general" },
+  { plantId: "bean", companionId: "eggplant", benefit: "Beans fix nitrogen that benefits eggplant and repel eggplant pests", benefitType: "soil" },
+
+  // Zucchini companions
+  { plantId: "squash", companionId: "zucchini", benefit: "Zucchini and squash share pollinator needs; planting together improves fruit set", benefitType: "pollination" },
+  { plantId: "corn", companionId: "zucchini", benefit: "Zucchini leaves shade out weeds while corn provides structure nearby", benefitType: "growth" },
+  { plantId: "bean", companionId: "zucchini", benefit: "Beans fix nitrogen that feeds zucchini's heavy nutrient needs", benefitType: "soil" },
+  { plantId: "pumpkin", companionId: "zucchini", benefit: "Zucchini and pumpkin cross-pollinate, improving fruit set for both", benefitType: "pollination" },
+
+  // Pumpkin companions
+  { plantId: "corn", companionId: "pumpkin", benefit: "Pumpkin leaves shade out weeds around corn in a Three Sisters-style guild", benefitType: "growth" },
+  { plantId: "bean", companionId: "pumpkin", benefit: "Beans fix nitrogen that pumpkins need for vine growth and fruiting", benefitType: "soil" },
+  { plantId: "squash", companionId: "pumpkin", benefit: "Pumpkin and squash cross-pollinate and attract shared pollinators", benefitType: "pollination" },
+
+  // Asparagus companions
+  { plantId: "tomato", companionId: "asparagus", benefit: "Asparagus repels nematodes that harm tomatoes; tomatoes repel asparagus beetles", benefitType: "pest-control" },
+  { plantId: "strawberry", companionId: "asparagus", benefit: "Asparagus and strawberries are classic long-term garden companions", benefitType: "general" },
+  { plantId: "carrot", companionId: "asparagus", benefit: "Asparagus and carrots benefit each other as deep-rooted perennial companions", benefitType: "general" },
+
+  // Spinach companions
+  { plantId: "lettuce", companionId: "spinach", benefit: "Spinach and lettuce share timing, spacing, and growing needs perfectly", benefitType: "general" },
+  { plantId: "carrot", companionId: "spinach", benefit: "Spinach provides ground cover that keeps carrot soil cool and moist", benefitType: "growth" },
+  { plantId: "strawberry", companionId: "spinach", benefit: "Spinach fills space between strawberries, suppressing weeds", benefitType: "growth" },
+  { plantId: "radish", companionId: "spinach", benefit: "Radishes act as a trap crop for leafminers that attack spinach", benefitType: "pest-control" },
+
+  // Kale companions
+  { plantId: "cabbage", companionId: "kale", benefit: "Kale and cabbage share companion needs — interplant with onions and herbs", benefitType: "general" },
+  { plantId: "lettuce", companionId: "kale", benefit: "Kale provides light shade that slows lettuce bolting in warm weather", benefitType: "growth" },
+  { plantId: "beet", companionId: "kale", benefit: "Kale and beets grow at different depths, sharing space and nutrients well", benefitType: "general" },
+
+  // Broccoli companions
+  { plantId: "cabbage", companionId: "broccoli", benefit: "Broccoli and cabbage share the same companion planting strategy", benefitType: "general" },
+  { plantId: "lettuce", companionId: "broccoli", benefit: "Broccoli provides light shade for lettuce; they share cool-season timing", benefitType: "growth" },
+  { plantId: "spinach", companionId: "broccoli", benefit: "Broccoli and spinach are ideal cool-season interplanting partners", benefitType: "general" },
+
+  // Beet companions
+  { plantId: "lettuce", companionId: "beet", benefit: "Beets and lettuce share cool-season timing and rarely compete for resources", benefitType: "general" },
+  { plantId: "cabbage", companionId: "beet", benefit: "Beets add manganese to soil via their leaves, benefiting nearby brassicas", benefitType: "soil" },
+  { plantId: "spinach", companionId: "beet", benefit: "Beets and spinach are excellent cool-season interplanting companions", benefitType: "general" },
+
+  // Swiss Chard companions
+  { plantId: "lettuce", companionId: "swiss_chard", benefit: "Swiss chard and lettuce share cool-season timing and space well together", benefitType: "general" },
+  { plantId: "spinach", companionId: "swiss_chard", benefit: "Swiss chard and spinach are natural cool-season garden companions", benefitType: "general" },
+  { plantId: "bean", companionId: "swiss_chard", benefit: "Beans fix nitrogen that supports Swiss chard's leafy growth", benefitType: "soil" },
 ];
 
 export function getCompanionsForPlants(
