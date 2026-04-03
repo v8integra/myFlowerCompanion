@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -22,18 +22,6 @@ import { PLANTS } from "@/data/plants";
 import { LANGUAGES } from "@/translations";
 import PlantChip from "@/components/PlantChip";
 import ZoneBadge from "@/components/ZoneBadge";
-
-const LANG_BADGE_COLORS: Record<string, string> = {
-  en: "#4A7C59",
-  es: "#B84040",
-  fr: "#2155A3",
-  it: "#1A7A47",
-  de: "#4A6080",
-  zh: "#B87020",
-  ja: "#8A1A1A",
-  ko: "#3A5AA0",
-  vi: "#7A3A1A",
-};
 
 export default function GardensScreen() {
   const { gardens, createGarden, deleteGarden } = useGarden();
@@ -65,7 +53,7 @@ export default function GardensScreen() {
     <View style={[styles.container, { paddingTop: topPad }]}>
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Text style={styles.appName}>MyFlowerCompanion</Text>
+          <Text style={styles.appName}>My Flower Companion</Text>
           <Text style={styles.subtitle}>{t("app_subtitle")}</Text>
         </View>
         <View style={styles.headerRight}>
@@ -73,13 +61,13 @@ export default function GardensScreen() {
             style={styles.langBtn}
             onPress={() => setLangPickerVisible(true)}
           >
-            <Ionicons name="globe-outline" size={20} color={Colors.light.primary} />
+            <AppIcon name="globe-outline" size={20} color={Colors.light.primary} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.addBtn}
             onPress={() => setCreating(true)}
           >
-            <Ionicons name="add" size={22} color="#fff" />
+            <AppIcon name="add" size={22} color="#fff" />
           </TouchableOpacity>
         </View>
       </View>
@@ -119,7 +107,7 @@ export default function GardensScreen() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Ionicons name="leaf-outline" size={48} color={Colors.light.border} />
+            <AppIcon name="leaf-outline" size={48} color={Colors.light.border} />
             <Text style={styles.emptyTitle}>{t("no_gardens")}</Text>
             <Text style={styles.emptyText}>{t("no_gardens_desc")}</Text>
             <TouchableOpacity style={styles.emptyBtn} onPress={() => setCreating(true)}>
@@ -140,7 +128,7 @@ export default function GardensScreen() {
               >
                 <View style={styles.cardTop}>
                   <View style={styles.cardIconBg}>
-                    <Ionicons name="flower" size={22} color={Colors.light.primary} />
+                    <AppIcon name="flower" size={22} color={Colors.light.primary} />
                   </View>
                   <View style={styles.cardInfo}>
                     <Text style={styles.cardName}>{item.name}</Text>
@@ -160,7 +148,7 @@ export default function GardensScreen() {
                 )}
                 <View style={styles.cardFooter}>
                   <Text style={styles.viewDetail}>{t("view_garden")}</Text>
-                  <Ionicons name="chevron-forward" size={14} color={Colors.light.primary} />
+                  <AppIcon name="chevron-forward" size={14} color={Colors.light.primary} />
                 </View>
               </Pressable>
 
@@ -171,7 +159,7 @@ export default function GardensScreen() {
                   hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
                   style={styles.trashBtn}
                 >
-                  <Ionicons name="trash-outline" size={16} color={Colors.light.danger} />
+                  <AppIcon name="trash-outline" size={16} color={Colors.light.danger} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -209,7 +197,7 @@ export default function GardensScreen() {
             <View style={styles.langPickerHeader}>
               <Text style={styles.langPickerTitle}>{t("select_language")}</Text>
               <TouchableOpacity onPress={() => setLangPickerVisible(false)}>
-                <Ionicons name="close" size={22} color={Colors.light.textSecondary} />
+                <AppIcon name="close" size={22} color={Colors.light.textSecondary} />
               </TouchableOpacity>
             </View>
             {LANGUAGES.map(l => (
@@ -222,9 +210,7 @@ export default function GardensScreen() {
                   setLangPickerVisible(false);
                 }}
               >
-                <View style={[styles.langCodeBadge, { backgroundColor: LANG_BADGE_COLORS[l.code] ?? "#4A7C59" }]}>
-                  <Text style={styles.langCodeText}>{l.code.toUpperCase()}</Text>
-                </View>
+                <Text style={styles.langFlag}>{l.flag}</Text>
                 <View style={styles.langInfo}>
                   <Text style={[styles.langNative, lang === l.code && styles.langNativeActive]}>
                     {l.nativeLabel}
@@ -232,7 +218,7 @@ export default function GardensScreen() {
                   <Text style={styles.langEnglish}>{l.label}</Text>
                 </View>
                 {lang === l.code && (
-                  <Ionicons name="checkmark" size={18} color={Colors.light.primary} />
+                  <AppIcon name="checkmark" size={18} color={Colors.light.primary} />
                 )}
               </TouchableOpacity>
             ))}
@@ -569,18 +555,8 @@ const styles = StyleSheet.create({
   langRowActive: {
     backgroundColor: Colors.light.softGreen,
   },
-  langCodeBadge: {
-    width: 38,
-    height: 38,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  langCodeText: {
-    fontSize: 12,
-    fontFamily: "Inter_700Bold",
-    color: "#fff",
-    letterSpacing: 0.5,
+  langFlag: {
+    fontSize: 22,
   },
   langInfo: {
     flex: 1,

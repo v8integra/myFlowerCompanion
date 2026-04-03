@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import React from "react";
 import {
   Linking,
@@ -19,7 +19,7 @@ const flowerCount = PLANTS.filter(p => p.type === "flower").length;
 const herbCount = PLANTS.filter(p => p.type === "herb").length;
 const vegCount = PLANTS.filter(p => p.type === "vegetable").length;
 
-const TIP_ICONS: (keyof typeof Ionicons.glyphMap)[] = [
+const TIP_ICONS: string[] = [
   "bug-outline",
   "sunny-outline",
   "water-outline",
@@ -75,9 +75,9 @@ export default function AboutScreen() {
       {/* Hero */}
       <View style={styles.hero}>
         <View style={styles.heroIcon}>
-          <Ionicons name="flower" size={40} color={Colors.light.primary} />
+          <AppIcon name="flower" size={40} color={Colors.light.primary} />
         </View>
-        <Text style={styles.heroTitle}>MyFlowerCompanion</Text>
+        <Text style={styles.heroTitle}>My Flower Companion</Text>
         <Text style={styles.heroSubtitle}>{t("about_hero")}</Text>
       </View>
 
@@ -127,7 +127,7 @@ export default function AboutScreen() {
           ].map((item, i) => (
             <View key={i} style={[styles.tipRow, i > 0 && styles.tipBorder]}>
               <View style={styles.tipIconBg}>
-                <Ionicons name={item.icon} size={16} color={Colors.light.primary} />
+                <AppIcon name={item.icon} size={16} color={Colors.light.primary} />
               </View>
               <Text style={styles.tipText}>{item.text}</Text>
             </View>
@@ -141,7 +141,7 @@ export default function AboutScreen() {
           {tips.map((tip, i) => (
             <View key={i} style={[styles.tipRow, i > 0 && styles.tipBorder]}>
               <View style={styles.tipIconBg}>
-                <Ionicons name={TIP_ICONS[i] ?? "leaf-outline"} size={16} color={Colors.light.primary} />
+                <AppIcon name={TIP_ICONS[i] ?? "leaf-outline"} size={16} color={Colors.light.primary} />
               </View>
               <Text style={styles.tipText}>{tip}</Text>
             </View>

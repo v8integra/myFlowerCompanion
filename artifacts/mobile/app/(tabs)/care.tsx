@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import React, { useMemo, useState } from "react";
 import {
   FlatList,
@@ -30,7 +30,7 @@ const TYPE_BG: Record<Plant["type"], string> = {
   vegetable: Colors.light.soft,
 };
 
-const SUN_ICON: Record<string, keyof typeof Ionicons.glyphMap> = {
+const SUN_ICON: Record<string, string> = {
   "Full Sun": "sunny",
   "Part Shade to Full Sun": "partly-sunny",
   "Full Sun to Part Shade": "partly-sunny",
@@ -55,10 +55,10 @@ function buildZoneLabels(zones: number[]): number[] {
   return [...zones].sort((a, b) => a - b);
 }
 
-function InfoCell({ icon, label, value }: { icon: keyof typeof Ionicons.glyphMap; label: string; value: string }) {
+function InfoCell({ icon, label, value }: { icon: string; label: string; value: string }) {
   return (
     <View style={styles.infoCell}>
-      <Ionicons name={icon} size={16} color={Colors.light.primary} />
+      <AppIcon name={icon} size={16} color={Colors.light.primary} />
       <Text style={styles.infoCellLabel}>{label}</Text>
       <Text style={styles.infoCellValue}>{value}</Text>
     </View>
@@ -93,7 +93,7 @@ function CareModal({ plant, guide, onClose }: { plant: Plant; guide: CareGuide; 
           <View style={styles.sheetHandle} />
           <View style={styles.sheetHeader}>
             <View style={[styles.sheetIconBg, { backgroundColor: TYPE_BG[plant.type] }]}>
-              <Ionicons name={plant.icon as keyof typeof Ionicons.glyphMap} size={24} color={TYPE_COLOR[plant.type]} />
+              <AppIcon name={plant.icon as string} size={24} color={TYPE_COLOR[plant.type]} />
             </View>
             <View style={styles.sheetTitleCol}>
               <Text style={styles.sheetTitle}>{getPlantName(plant, lang)}</Text>
@@ -105,13 +105,13 @@ function CareModal({ plant, guide, onClose }: { plant: Plant; guide: CareGuide; 
               </Text>
             </View>
             <TouchableOpacity onPress={onClose} style={styles.closeBtn}>
-              <Ionicons name="close" size={22} color={Colors.light.textSecondary} />
+              <AppIcon name="close" size={22} color={Colors.light.textSecondary} />
             </TouchableOpacity>
           </View>
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.sheetScroll}>
             <View style={styles.zoneBar}>
               <View style={styles.zoneBarLeft}>
-                <Ionicons name="map-outline" size={16} color={Colors.light.primary} />
+                <AppIcon name="map-outline" size={16} color={Colors.light.primary} />
                 <View>
                   <Text style={styles.zoneBarLabel}>{t("growing_zones")}</Text>
                   <Text style={styles.zoneBarRange}>
@@ -146,7 +146,7 @@ function CareModal({ plant, guide, onClose }: { plant: Plant; guide: CareGuide; 
               </View>
             ))}
             <View style={styles.descCard}>
-              <Ionicons name="information-circle-outline" size={16} color={Colors.light.primary} />
+              <AppIcon name="information-circle-outline" size={16} color={Colors.light.primary} />
               <Text style={styles.descText}>{plant.description}</Text>
             </View>
           </ScrollView>
@@ -200,7 +200,7 @@ export default function CareScreen() {
       </View>
 
       <View style={styles.searchRow}>
-        <Ionicons name="search" size={18} color={Colors.light.textSecondary} />
+        <AppIcon name="search" size={18} color={Colors.light.textSecondary} />
         <TextInput
           style={styles.searchInput}
           placeholder={t("search_plants")}
@@ -211,7 +211,7 @@ export default function CareScreen() {
         />
         {search.length > 0 && (
           <TouchableOpacity onPress={() => setSearch("")}>
-            <Ionicons name="close-circle" size={18} color={Colors.light.textSecondary} />
+            <AppIcon name="close-circle" size={18} color={Colors.light.textSecondary} />
           </TouchableOpacity>
         )}
       </View>
@@ -246,7 +246,7 @@ export default function CareScreen() {
               onPress={() => guide && setSelected({ plant: item, guide })}
             >
               <View style={[styles.iconBg, { backgroundColor: TYPE_BG[item.type] }]}>
-                <Ionicons name={item.icon as keyof typeof Ionicons.glyphMap} size={22} color={TYPE_COLOR[item.type]} />
+                <AppIcon name={item.icon as string} size={22} color={TYPE_COLOR[item.type]} />
               </View>
               <View style={styles.rowInfo}>
                 <Text style={styles.plantName}>{getPlantName(item, lang)}</Text>
@@ -259,7 +259,7 @@ export default function CareScreen() {
                   </Text>
                 </View>
               )}
-              <Ionicons name="chevron-forward" size={16} color={Colors.light.border} />
+              <AppIcon name="chevron-forward" size={16} color={Colors.light.border} />
             </Pressable>
           );
         }}

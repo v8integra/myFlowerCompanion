@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useMemo, useRef, useState } from "react";
@@ -113,7 +113,7 @@ export default function AddPlantScreen() {
       {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
-          <Ionicons name="chevron-back" size={24} color={Colors.light.text} />
+          <AppIcon name="chevron-back" size={24} color={Colors.light.text} />
         </TouchableOpacity>
         <Text style={styles.title}>{t("add_plants")}</Text>
         <View style={{ width: 36 }} />
@@ -121,7 +121,7 @@ export default function AddPlantScreen() {
 
       {/* Search */}
       <View style={styles.searchRow}>
-        <Ionicons name="search" size={18} color={Colors.light.textSecondary} style={styles.searchIcon} />
+        <AppIcon name="search" size={18} color={Colors.light.textSecondary} style={styles.searchIcon} />
         <TextInput
           style={styles.searchInput}
           placeholder={t("search_plants")}
@@ -132,7 +132,7 @@ export default function AddPlantScreen() {
         />
         {search.length > 0 && (
           <TouchableOpacity onPress={() => setSearch("")}>
-            <Ionicons name="close-circle" size={18} color={Colors.light.textSecondary} />
+            <AppIcon name="close-circle" size={18} color={Colors.light.textSecondary} />
           </TouchableOpacity>
         )}
       </View>
@@ -140,10 +140,10 @@ export default function AddPlantScreen() {
       {/* Add custom plant button */}
       <TouchableOpacity style={styles.addCustomRow} onPress={openModal}>
         <View style={styles.addCustomIcon}>
-          <Ionicons name="add" size={16} color={Colors.light.primary} />
+          <AppIcon name="add" size={16} color={Colors.light.primary} />
         </View>
         <Text style={styles.addCustomLabel}>{t("add_custom_banner")}</Text>
-        <Ionicons name="chevron-forward" size={14} color={Colors.light.textSecondary} />
+        <AppIcon name="chevron-forward" size={14} color={Colors.light.textSecondary} />
       </TouchableOpacity>
 
       {/* Filters */}
@@ -169,10 +169,10 @@ export default function AddPlantScreen() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <View style={styles.empty}>
-            <Ionicons name="search-outline" size={36} color={Colors.light.border} />
+            <AppIcon name="search-outline" size={36} color={Colors.light.border} />
             <Text style={styles.emptyText}>{t("no_plants_found")}</Text>
             <TouchableOpacity style={styles.emptyCreateBtn} onPress={openModal}>
-              <Ionicons name="add-circle-outline" size={16} color={Colors.light.primary} />
+              <AppIcon name="add-circle-outline" size={16} color={Colors.light.primary} />
               <Text style={styles.emptyCreateText}>
                 {t("create_named", { name: search || t("add_custom_plant") })}
               </Text>
@@ -185,8 +185,8 @@ export default function AddPlantScreen() {
           return (
             <View style={[styles.row, added && styles.rowAdded]}>
               <View style={[styles.typeIcon, { backgroundColor: TYPE_BG[item.type] }]}>
-                <Ionicons
-                  name={item.icon as keyof typeof Ionicons.glyphMap}
+                <AppIcon
+                  name={item.icon as string}
                   size={20}
                   color={TYPE_COLOR[item.type]}
                 />
@@ -209,14 +209,14 @@ export default function AddPlantScreen() {
                   style={styles.deleteBtn}
                   onPress={() => setDeleteTarget(item)}
                 >
-                  <Ionicons name="trash-outline" size={17} color={Colors.light.danger} />
+                  <AppIcon name="trash-outline" size={17} color={Colors.light.danger} />
                 </TouchableOpacity>
               )}
               <TouchableOpacity
                 style={[styles.addBtn, added && styles.addBtnAdded]}
                 onPress={() => handleToggle(item)}
               >
-                <Ionicons
+                <AppIcon
                   name={added ? "remove" : "add"}
                   size={18}
                   color={added ? Colors.light.danger : "#fff"}
@@ -237,7 +237,7 @@ export default function AddPlantScreen() {
         <Pressable style={styles.centeredOverlay} onPress={() => setDeleteTarget(null)}>
           <Pressable style={styles.deleteModalCard} onPress={e => e.stopPropagation()}>
             <View style={styles.deleteModalIcon}>
-              <Ionicons name="trash" size={28} color={Colors.light.danger} />
+              <AppIcon name="trash" size={28} color={Colors.light.danger} />
             </View>
             <Text style={styles.deleteModalTitle}>{t("delete_custom_plant")}</Text>
             <Text style={styles.deleteModalBody}>
@@ -260,7 +260,7 @@ export default function AddPlantScreen() {
                   setDeleteTarget(null);
                 }}
               >
-                <Ionicons name="trash-outline" size={16} color="#fff" />
+                <AppIcon name="trash-outline" size={16} color="#fff" />
                 <Text style={styles.deleteModalConfirmText}>{t("delete")}</Text>
               </TouchableOpacity>
             </View>
@@ -284,7 +284,7 @@ export default function AddPlantScreen() {
               <View style={styles.modalHeader}>
                 <Text style={styles.modalTitle}>{t("add_custom_plant")}</Text>
                 <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.modalClose}>
-                  <Ionicons name="close" size={20} color={Colors.light.textSecondary} />
+                  <AppIcon name="close" size={20} color={Colors.light.textSecondary} />
                 </TouchableOpacity>
               </View>
 
@@ -315,7 +315,7 @@ export default function AddPlantScreen() {
                     ]}
                     onPress={() => setCustomType(tp)}
                   >
-                    <Ionicons
+                    <AppIcon
                       name={tp === "flower" ? "flower" : tp === "herb" ? "leaf" : "nutrition"}
                       size={14}
                       color={customType === tp ? "#fff" : TYPE_COLOR[tp]}
@@ -334,7 +334,7 @@ export default function AddPlantScreen() {
                 onPress={handleCreateCustom}
                 disabled={!customName.trim()}
               >
-                <Ionicons name="add-circle" size={18} color="#fff" />
+                <AppIcon name="add-circle" size={18} color="#fff" />
                 <Text style={styles.modalSaveText}>{t("add_to_garden")}</Text>
               </TouchableOpacity>
             </Pressable>

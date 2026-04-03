@@ -849,3 +849,13 @@ export function getCompanionsForPlants(
     return typeOrder[a.plant.type] - typeOrder[b.plant.type];
   });
 }
+
+export function getZoneSuggestions(
+  zone: number,
+  excludeIds: string[],
+  max = 4
+): Plant[] {
+  return PLANTS.filter(
+    p => p.type === "flower" && p.zones.includes(zone) && !excludeIds.includes(p.id)
+  ).slice(0, max);
+}

@@ -1,8 +1,8 @@
-import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "@/constants/colors";
+import { AppIcon } from "@/components/AppIcon";
 import { useLanguage } from "@/context/LanguageContext";
 import { Plant } from "@/data/plants";
 import { getPlantName } from "@/translations/plant-names";
@@ -43,7 +43,7 @@ export default function PlantChip({ plant, onRemove, compact = false }: PlantChi
       </Text>
       {onRemove && (
         <TouchableOpacity onPress={handleRemove} style={styles.removeBtn} hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}>
-          <Ionicons name="close" size={compact ? 12 : 14} color={textColor} />
+          <AppIcon name="close" size={compact ? 12 : 14} color={textColor} />
         </TouchableOpacity>
       )}
     </View>

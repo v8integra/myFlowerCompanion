@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import * as Location from "expo-location";
 import React, { useState } from "react";
@@ -245,7 +245,7 @@ export default function SettingsScreen() {
 
         {globalZone !== null && (
           <View style={styles.currentZone}>
-            <Ionicons name="location" size={24} color={Colors.light.primary} />
+            <AppIcon name="location" size={24} color={Colors.light.primary} />
             <View style={styles.currentZoneText}>
               <Text style={styles.currentZoneLabel}>{t("current_zone")}</Text>
               <Text style={styles.currentZoneValue}>{t("zone_label", { n: globalZone })}</Text>
@@ -266,7 +266,7 @@ export default function SettingsScreen() {
             {detecting ? (
               <ActivityIndicator color="#fff" size="small" />
             ) : (
-              <Ionicons name="navigate" size={18} color="#fff" />
+              <AppIcon name="navigate" size={18} color="#fff" />
             )}
             <Text style={styles.detectBtnText}>{detecting ? t("detecting") : t("detect_my_zone")}</Text>
           </TouchableOpacity>
@@ -319,7 +319,7 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.infoBox}>
-          <Ionicons name="information-circle-outline" size={16} color={Colors.light.textSecondary} />
+          <AppIcon name="information-circle-outline" size={16} color={Colors.light.textSecondary} />
           <Text style={styles.infoText}>{t("zone_info")}</Text>
         </View>
       </ScrollView>

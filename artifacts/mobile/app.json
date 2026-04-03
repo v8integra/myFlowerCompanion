@@ -2,7 +2,7 @@
   "expo": {
     "name": "MyFlowerCompanion",
     "slug": "mobile",
-    "version": "1.0.0",
+    "version": "0.1.0-Beta",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "mobile",
@@ -27,7 +27,12 @@
           "origin": "https://replit.com/"
         }
       ],
-      "expo-font",
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Ionicons.ttf"]
+        }
+      ],
       "expo-web-browser",
       [
         "expo-location",

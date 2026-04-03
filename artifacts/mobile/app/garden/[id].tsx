@@ -1,4 +1,4 @@
-import { Ionicons } from "@expo/vector-icons";
+import { AppIcon } from "@/components/AppIcon";
 import * as Haptics from "expo-haptics";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
@@ -69,7 +69,7 @@ export default function GardenDetailScreen() {
     <View style={[styles.container, { paddingTop: topPad }]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
-          <Ionicons name="chevron-back" size={24} color={Colors.light.text} />
+          <AppIcon name="chevron-back" size={24} color={Colors.light.text} />
         </TouchableOpacity>
         <View style={styles.headerCenter}>
           {editingName ? (
@@ -85,7 +85,7 @@ export default function GardenDetailScreen() {
             <TouchableOpacity onPress={() => { setNameInput(garden.name); setEditingName(true); }}>
               <View style={styles.nameRow}>
                 <Text style={styles.gardenName}>{garden.name}</Text>
-                <Ionicons name="pencil" size={14} color={Colors.light.textSecondary} />
+                <AppIcon name="pencil" size={14} color={Colors.light.textSecondary} />
               </View>
             </TouchableOpacity>
           )}
@@ -95,7 +95,7 @@ export default function GardenDetailScreen() {
           onPress={handleReset}
           disabled={plants.length === 0}
         >
-          <Ionicons name="refresh" size={18} color={plants.length === 0 ? Colors.light.border : Colors.light.danger} />
+          <AppIcon name="refresh" size={18} color={plants.length === 0 ? Colors.light.border : Colors.light.danger} />
         </TouchableOpacity>
       </View>
 
@@ -125,7 +125,7 @@ export default function GardenDetailScreen() {
         <View style={styles.toggleCard}>
           <View style={styles.toggleRow}>
             <View style={styles.toggleInfo}>
-              <Ionicons name="leaf-outline" size={16} color={Colors.light.primary} />
+              <AppIcon name="leaf-outline" size={16} color={Colors.light.primary} />
               <Text style={styles.toggleLabel}>{t("include_herbs")}</Text>
             </View>
             <Switch
@@ -138,7 +138,7 @@ export default function GardenDetailScreen() {
           <View style={styles.toggleDivider} />
           <View style={styles.toggleRow}>
             <View style={styles.toggleInfo}>
-              <Ionicons name="nutrition-outline" size={16} color={Colors.light.accent} />
+              <AppIcon name="nutrition-outline" size={16} color={Colors.light.accent} />
               <Text style={styles.toggleLabel}>{t("include_vegetables")}</Text>
             </View>
             <Switch
@@ -156,7 +156,7 @@ export default function GardenDetailScreen() {
             style={styles.addPlantBtn}
             onPress={() => router.push({ pathname: "/garden/add-plant", params: { id: garden.id } })}
           >
-            <Ionicons name="add" size={16} color={Colors.light.primary} />
+            <AppIcon name="add" size={16} color={Colors.light.primary} />
             <Text style={styles.addPlantText}>{t("add_plant")}</Text>
           </TouchableOpacity>
         </View>
@@ -166,7 +166,7 @@ export default function GardenDetailScreen() {
             style={styles.emptyPlants}
             onPress={() => router.push({ pathname: "/garden/add-plant", params: { id: garden.id } })}
           >
-            <Ionicons name="add-circle-outline" size={32} color={Colors.light.border} />
+            <AppIcon name="add-circle-outline" size={32} color={Colors.light.border} />
             <Text style={styles.emptyText}>{t("add_first_plant")}</Text>
             <Text style={styles.emptySubtext}>{t("add_first_plant_sub")}</Text>
           </Pressable>
@@ -189,7 +189,7 @@ export default function GardenDetailScreen() {
               router.push({ pathname: "/garden/companions", params: { id: garden.id } })
             }
           >
-            <Ionicons name="flower" size={20} color="#fff" />
+            <AppIcon name="flower" size={20} color="#fff" />
             <Text style={styles.viewCompanionsText}>{t("view_companions")}</Text>
           </TouchableOpacity>
         )}
@@ -200,7 +200,7 @@ export default function GardenDetailScreen() {
         <View style={styles.modalOverlay}>
           <View style={styles.modalCard}>
             <View style={styles.modalIconRow}>
-              <Ionicons name="refresh-circle" size={32} color={Colors.light.danger} />
+              <AppIcon name="refresh-circle" size={32} color={Colors.light.danger} />
             </View>
             <Text style={styles.modalTitle}>{t("reset_garden")}</Text>
             <Text style={styles.modalMessage}>

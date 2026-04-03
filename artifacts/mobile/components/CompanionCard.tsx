@@ -1,7 +1,7 @@
-import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Colors from "@/constants/colors";
+import { AppIcon } from "@/components/AppIcon";
 import { useLanguage } from "@/context/LanguageContext";
 import { Plant } from "@/data/plants";
 import { getPlantName } from "@/translations/plant-names";
@@ -14,7 +14,7 @@ interface CompanionCardProps {
   benefitType: BenefitType;
 }
 
-const BENEFIT_CONFIG: Record<BenefitType, { icon: keyof typeof Ionicons.glyphMap; color: string; bg: string }> = {
+const BENEFIT_CONFIG: Record<BenefitType, { icon: string; color: string; bg: string }> = {
   "pest-control": { icon: "shield-checkmark", color: "#C4634A", bg: Colors.light.softPink },
   "pollination":  { icon: "flower",           color: Colors.light.primary, bg: Colors.light.softGreen },
   "soil":         { icon: "earth",            color: "#7A6A55", bg: Colors.light.soft },
@@ -45,7 +45,7 @@ export default function CompanionCard({ plant, benefit, benefitType }: Companion
     <View style={styles.card}>
       <View style={styles.header}>
         <View style={[styles.iconBg, { backgroundColor: config.bg }]}>
-          <Ionicons name={config.icon} size={20} color={config.color} />
+          <AppIcon name={config.icon} size={20} color={config.color} />
         </View>
         <View style={styles.headerText}>
           <Text style={styles.plantName}>{displayName}</Text>
@@ -58,7 +58,7 @@ export default function CompanionCard({ plant, benefit, benefitType }: Companion
       <Text style={styles.benefit}>{benefit}</Text>
       <Text style={styles.description}>{plant.description}</Text>
       <View style={styles.zoneRow}>
-        <Ionicons name="location-outline" size={12} color={Colors.light.textSecondary} />
+        <AppIcon name="location-outline" size={12} color={Colors.light.textSecondary} />
         <Text style={styles.zoneText}>Zones {plant.zones[0]}–{plant.zones[plant.zones.length - 1]}</Text>
       </View>
     </View>
