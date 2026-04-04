@@ -1,7 +1,7 @@
 Android - APK file or (.aab)
 Title (30 characters): My Flower Companion
 Short Description (80 characters): 
-
+Plan and grow thriving gardens by finding companion flowers for your plants.
 
 
 iOS - Xcode

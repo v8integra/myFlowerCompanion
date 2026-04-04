@@ -2,6 +2,7 @@ import { AppIcon } from "@/components/AppIcon";
 import React, { useMemo, useState } from "react";
 import {
   FlatList,
+  Image,
   Modal,
   Platform,
   Pressable,
@@ -18,6 +19,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { PLANTS, Plant } from "@/data/plants";
 import { CARE_GUIDES, CareGuide } from "@/data/care";
 import { getPlantName } from "@/translations/plant-names";
+import PLANT_IMAGES from "@/data/plant-images";
 
 const TYPE_COLOR: Record<Plant["type"], string> = {
   flower: "#C4634A",
@@ -109,6 +111,13 @@ function CareModal({ plant, guide, onClose }: { plant: Plant; guide: CareGuide; 
             </TouchableOpacity>
           </View>
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.sheetScroll}>
+            {PLANT_IMAGES[plant.id] && (
+              <Image
+                source={PLANT_IMAGES[plant.id]}
+                style={styles.plantImage}
+                resizeMode="cover"
+              />
+            )}
             <View style={styles.zoneBar}>
               <View style={styles.zoneBarLeft}>
                 <AppIcon name="map-outline" size={16} color={Colors.light.primary} />
@@ -324,6 +333,7 @@ const styles = StyleSheet.create({
   diffText: { fontSize: 12, fontFamily: "Inter_600SemiBold" },
   closeBtn: { width: 32, height: 32, borderRadius: 8, backgroundColor: Colors.light.soft, alignItems: "center", justifyContent: "center" },
   sheetScroll: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 24, gap: 16 },
+  plantImage: { width: "100%", height: 200, borderRadius: 16, backgroundColor: Colors.light.soft },
   zoneBar: {
     flexDirection: "row", alignItems: "center", justifyContent: "space-between",
     backgroundColor: Colors.light.soft, borderRadius: 14, padding: 14,
