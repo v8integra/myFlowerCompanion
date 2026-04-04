@@ -16,7 +16,13 @@
     "ios": {
       "supportsTablet": false
     },
-    "android": {},
+    "android": {
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ],
+      "package": "com.v8integra.mobile"
+    },
     "web": {
       "favicon": "./assets/images/icon.png"
     },
@@ -30,7 +36,9 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Ionicons.ttf"]
+          "fonts": [
+            "./assets/fonts/Ionicons.ttf"
+          ]
         }
       ],
       "expo-web-browser",
@@ -44,6 +52,11 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "52c21224-2af2-4cd6-a378-83a80b82e482"
+      }
     }
   }
 }
