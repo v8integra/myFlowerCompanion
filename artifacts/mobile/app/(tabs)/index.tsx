@@ -16,6 +16,7 @@ import {
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
+import { AdBanner } from "@/components/AdBanner";
 import { useGarden } from "@/context/GardenContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { PLANTS } from "@/data/plants";
@@ -166,6 +167,8 @@ export default function GardensScreen() {
           );
         }}
       />
+
+      <AdBanner />
 
       {/* Delete confirmation modal */}
       <Modal visible={deleteTarget !== null} transparent animationType="fade">

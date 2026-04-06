@@ -277,7 +277,7 @@ export default function AddPlantScreen() {
       >
         <Pressable style={styles.overlay} onPress={() => setModalVisible(false)}>
           <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            behavior="padding"
             style={styles.kvWrapper}
           >
             <Pressable style={styles.modalCard} onPress={e => e.stopPropagation()}>
@@ -428,7 +428,7 @@ const styles = StyleSheet.create({
   emptyCreateText: { fontSize: 14, fontFamily: "Inter_600SemiBold", color: Colors.light.primary },
   overlay: { flex: 1, backgroundColor: "rgba(0,0,0,0.45)", justifyContent: "flex-end" },
   centeredOverlay: { flex: 1, backgroundColor: "rgba(0,0,0,0.45)", justifyContent: "center" },
-  kvWrapper: { justifyContent: "flex-end" },
+  kvWrapper: { flex: 1, justifyContent: "flex-end" },
   modalCard: {
     backgroundColor: Colors.light.card, borderTopLeftRadius: 24, borderTopRightRadius: 24,
     padding: 24, paddingBottom: 40, gap: 4,

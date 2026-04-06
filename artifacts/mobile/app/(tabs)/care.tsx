@@ -15,6 +15,7 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
+import { AdBanner } from "@/components/AdBanner";
 import { useLanguage } from "@/context/LanguageContext";
 import { PLANTS, Plant } from "@/data/plants";
 import { CARE_GUIDES, CareGuide } from "@/data/care";
@@ -273,6 +274,8 @@ export default function CareScreen() {
           );
         }}
       />
+
+      <AdBanner />
 
       {selected && (
         <CareModal

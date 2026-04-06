@@ -1,7 +1,8 @@
 Android - APK file or (.aab)
 Title (30 characters): My Flower Companion
-Short Description (80 characters): 
-Plan and grow thriving gardens by finding companion flowers for your plants.
+Short Description (80 characters): Plan and grow thriving gardens by finding companion flowers for your plants.
+Monetizing: IAA - Google AdMod
+
 
 
 iOS - Xcode
@@ -15,6 +16,6 @@ Expo provides a free cloud build service called EAS Build. You would:
 
 Create a free account at expo.dev
 Install the EAS CLI on your own machine (npm install -g eas-cli)
-Run eas build -p android --profile preview from the artifacts/mobile folder
+Run eas build -p android --profile production from the artifacts/mobile folder
 Download the resulting .apk file when the build finishes (usually 10–15 minutes)
 This produces a proper signed APK you can sideload directly onto your Android device.

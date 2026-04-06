@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
+import { AdBanner } from "@/components/AdBanner";
 import { useGarden } from "@/context/GardenContext";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -225,6 +226,7 @@ export default function SettingsScreen() {
   };
 
   return (
+    <View style={{ flex: 1, backgroundColor: Colors.light.soft }}>
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -324,6 +326,8 @@ export default function SettingsScreen() {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
+    <AdBanner />
+    </View>
   );
 }
 
